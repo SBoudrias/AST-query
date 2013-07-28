@@ -1,16 +1,29 @@
 {
-  "name": "test-rocambole",
-  "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
+  "name": "easy-AST",
+  "version": "0.1.0-pre",
+  "description": "Tentative to a simple JavaScript AST modification library",
   "main": "lib/tree.js",
+  "author": "Simon Boudrias <admin@simonboudrias.com>",
+  "license": "MIT",
+  "keywords": [ "AST", "source", "traversal", "syntax", "tree" ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt"
   },
-  "repository": "",
-  "author": "",
-  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:SBoudrias/easy-AST.git"
+  },
   "dependencies": {
-    "rocambole": "~0.2.3",
     "falafel": "~0.3.1"
+  },
+  "devDependencies": {
+    "chai": "~1.7.2",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-simple-mocha": "~0.4.0",
+    "grunt-release": "~0.4.0"
+  },
+  "peerDependencies": {
+    "grunt-cli": "~0.1.9"
   }
 }
