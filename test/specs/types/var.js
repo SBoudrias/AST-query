@@ -11,6 +11,20 @@ describe("variable modification api", function() {
     expect( this.tree.toString() ).to.equal("var a = 'bar';");
   });
 
+  it("should update the value if no previous value is set", function() {
+    var tree = new Tree("var a;");
+    tree.var("a").value("'bar'");
+    expect( tree.toString() ).to.equal("var a = 'bar';");
+  });
+
+  it("should allow a function as value argument", function() {
+    this.tree.var("a").value(function( prev ) {
+      expect(prev).to.equal("'foo'");
+      return "'bar'";
+    });
+    expect( this.tree.toString() ).to.equal("var a = 'bar';");
+  });
+
   it("should update the name", function() {
     this.tree.var("a").rename("b");
     expect( this.tree.toString() ).to.equal("var b = 'foo';");
