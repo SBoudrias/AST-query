@@ -20,7 +20,7 @@ console.log( ast.toString() + "\n\n" );
 ast.var("b").rename("easy");
 console.log( ast.toString() + "\n\n" );
 
-ast.var("easy").delete();
+ast.var("a").delete();
 console.log( ast.toString() );
 
 
