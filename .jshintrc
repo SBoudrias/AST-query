@@ -2,12 +2,11 @@
   "node"      : true,
   "bitwise"   : true,
   "boss"      : true,
-  "browser"   : true,
   "camelcase" : true,
   "debug"     : true,
   "eqeqeq"    : true,
   "eqnull"    : true,
-  "esnext"    : true,
+  "es5"       : true,
   "expr"      : true,
   "immed"     : true,
   "iterator"  : true,
@@ -38,6 +37,8 @@
   "globals": {
     "describe": true,
     "it": true,
+    "before": true,
+    "after": true,
     "beforeEach": true,
     "afterEach": true
   }

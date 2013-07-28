@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-var Tree = require("../../lib/tree");
+var Tree = require("../../../lib/tree");
 
 describe("variable modification api", function() {
   beforeEach(function() {
