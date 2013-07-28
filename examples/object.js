@@ -17,5 +17,5 @@ console.log( ast.toString() + "\n\n" );
 var tree = new Tree("grunt.init({ key: 'value' })");
 console.log( tree.toString() + "\n\n" );
 
-tree.object();
+tree.object().passedTo("grunt.init").key("key").value("'foo'");
 console.log( tree.toString() + "\n\n" );
