@@ -1,5 +1,5 @@
 var Tree = require("../lib/tree");
-var codeStr = 'var a = "bar", b = "foo";';
+var codeStr = "var a = 'bar', b = 'foo';";
 
 // Test code
 var ast = new Tree(codeStr);
