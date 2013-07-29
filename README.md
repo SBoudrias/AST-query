@@ -7,6 +7,9 @@ If you've ever worked with AST trying to edit source code, you've probably had a
 as the syntax is somehow terse and you need to loop and use conditionnals a lot. AST Query
 try to hide this complexity behind a declarative façade.
 
+Making this choice, AST Query does not try to cover a full AST API, but instead answer
+common needs.
+
 
 Getting Started
 ================
@@ -30,6 +33,13 @@ tree.var("a").value("'bar'");
 console.log( tree.toString() );
 // LOG: var a = 'bar';
 ```
+
+Reminder you're editing source code. As so, you'll need to add extra quotes when outputting
+strings (e.g.: `"'foo'"`).
+
+Also, note that AST Query isn't checking you output valid code; neither does it check for
+whitespace consistency. You may want to pass each transformed sources in a beautifier if
+this is important.
 
 
 API
@@ -133,3 +143,23 @@ a parameter and returning the new property value
 
 ### `.delete()`
 - Delete the property from the object.
+
+
+Contributing
+=====================
+
+**Style Guide**: Please base yourself on [Idiomatic.js](https://github.com/rwldrn/idiomatic.js)
+style guide with two space indent  
+**Unit test**: Unit test are wrote in Mocha. Please add a unit test for every new feature
+or bug fix. `npm test` to run the test suite.  
+**Documentation**: Add documentation for every API change. Feel free to send corrections
+or better docs!  
+**Pull Requests**: Send _fixes_ PR on the `master` branch. Any new features should be send
+on the `wip`branch.
+
+
+License
+=====================
+
+Copyright (c) 2013 Simon Boudrias (twitter: @vaxilart)  
+Licensed under the MIT license.
