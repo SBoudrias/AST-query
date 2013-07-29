@@ -1,16 +1,22 @@
-easy-AST
+AST Query
 ================
 
-Tentative to a simple JavaScript AST modification library
+Tentative to a simple JavaScript AST modification library.
+
+If you've ever worked with AST trying to edit source code, you've probably had a hard time
+as the syntax is somehow terse and you need to loop and use conditionnals a lot. AST Query
+try to hide this complexity behind a declarative façade.
 
 
 Getting Started
 ================
 
+Install: `npm install --save ast-query`
+
 First, you always need to create a `Tree` which you'll edit
 
 ``` javascript
-var Tree = require("easy-AST");
+var Tree = require("ast-query");
 var tree = new Tree("var a = 'foo'");
 ```
 

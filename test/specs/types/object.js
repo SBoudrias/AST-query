@@ -50,6 +50,14 @@ describe("object modification API", function() {
       expect(this.tree.toString()).to.equal("var a = { a: 'a', b: 'foo' };");
     });
 
+    it("should take a function as `.value` argument", function() {
+      this.tree.object().key("b").value(function( prev ) {
+        expect(prev).to.equal("'b'");
+        return "'foo'";
+      });
+      expect(this.tree.toString()).to.equal("var a = { a: 'a', b: 'foo' };");
+    });
+
     it("should delete a property", function() {
       this.tree.object().key("b").delete();
       expect(this.tree.toString()).to.equal("var a = { a: 'a' };");

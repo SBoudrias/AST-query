@@ -6,7 +6,6 @@
   "debug"     : true,
   "eqeqeq"    : true,
   "eqnull"    : true,
-  "es5"       : true,
   "expr"      : true,
   "immed"     : true,
   "iterator"  : true,

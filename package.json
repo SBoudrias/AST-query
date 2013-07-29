@@ -1,7 +1,7 @@
 {
-  "name": "easy-AST",
+  "name": "ast-query",
   "version": "0.1.0-pre",
-  "description": "Tentative to a simple JavaScript AST modification library",
+  "description": "Declarative JavaScript AST modification façade",
   "main": "lib/tree.js",
   "author": "Simon Boudrias <admin@simonboudrias.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:SBoudrias/easy-AST.git"
+    "url": "git@github.com:SBoudrias/AST-query.git"
   },
   "dependencies": {
     "falafel": "~0.3.1"
@@ -19,11 +19,9 @@
   "devDependencies": {
     "chai": "~1.7.2",
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-jshint": "~0.5.0",
     "grunt-simple-mocha": "~0.4.0",
     "grunt-release": "~0.4.0"
-  },
-  "peerDependencies": {
-    "grunt-cli": "~0.1.9"
   }
 }
