@@ -14,8 +14,8 @@ ast.object().assignedTo("obj").key("c").delete();
 console.log( ast.toString() + "\n\n" );
 
 // Test object as argument
-var tree = new Tree("grunt.init({ key: 'value' })");
+var tree = new Tree("grunt.init({ key: { sub: 'foo' } })");
 console.log( tree.toString() + "\n\n" );
 
-tree.object().passedTo("grunt.init").key("key").value("'foo'");
+tree.object().passedTo("grunt.init").key("key").key("sub").value("'neat'");
 console.log( tree.toString() + "\n\n" );

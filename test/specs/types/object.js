@@ -65,6 +65,16 @@ describe("object modification API", function() {
       var tree = new Tree(this.src);
       tree.object().key("a").delete();
       expect(tree.toString()).to.equal("var a = { b: 'b' };");
+
+      var tree2 = new Tree("var a = { a: 'a', b: 'b', c: 'c' };");
+      tree2.object().key("b").delete();
+      expect(tree2.toString()).to.equal("var a = { a: 'a', c: 'c' };");
+    });
+
+    it("should select sub key", function() {
+      var tree = new Tree("var a = { a: 'a', b: { c: 'foo' }}");
+      tree.object().key("b").key("c").value("'foo'");
+      expect(tree.toString()).to.equal("var a = { a: 'a', b: { c: 'foo' }}");
     });
 
   });

@@ -144,6 +144,13 @@ a parameter and returning the new property value
 ### `.delete()`
 - Delete the property from the object.
 
+### `.key( name )`
+- **name**
+- type: String
+- If the property value is an object, key name to select (if value is not an object, this
+condition is just ignored).
+- Returns: A `Property` token.
+
 
 Contributing
 =====================
