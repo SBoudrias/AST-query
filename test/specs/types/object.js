@@ -72,9 +72,35 @@ describe("object modification API", function() {
     });
 
     it("should select sub key", function() {
-      var tree = new Tree("var a = { a: 'a', b: { c: 'foo' }}");
+      var tree = new Tree("var a = { a: 'a', b: { c: 'foo' }};");
       tree.object().key("b").key("c").value("'foo'");
-      expect(tree.toString()).to.equal("var a = { a: 'a', b: { c: 'foo' }}");
+      expect(tree.toString()).to.equal("var a = { a: 'a', b: { c: 'foo' }};");
+    });
+
+    it("add a key", function () {
+      var tree = new Tree("var a = {};");
+      tree.object().key("b").value("'foo'");
+      expect(tree.toString()).to.equal("var a = { b: 'foo' };");
+    });
+
+    it("add a key after other keys", function () {
+      var tree = new Tree("var a = { m: 'b' };");
+      tree.object().key("b").value("'foo'");
+      expect(tree.toString()).to.equal("var a = { m: 'b' ,  b: 'foo' };");
+    });
+
+    it("doesn't break if key doesn't exist", function () {
+      var tree = new Tree("var a = { m: 'b' };");
+      tree.object().key("b");
+      expect(tree.toString()).to.equal("var a = { m: 'b' };");
+    });
+
+    it("doesn't add multiple keys if it initially didn't exist", function () {
+      var tree = new Tree("var a = { m: 'b' };");
+      tree.object().key("b").value("'foo'");
+      tree._process();
+      tree.object().key("b").value("'foo'");
+      expect(tree.toString()).to.equal("var a = { m: 'b' ,  b: 'foo' };");
     });
 
   });
