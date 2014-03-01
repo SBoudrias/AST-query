@@ -5,7 +5,13 @@
   "main": "lib/tree.js",
   "author": "Simon Boudrias <admin@simonboudrias.com>",
   "license": "MIT",
-  "keywords": [ "AST", "source", "traversal", "syntax", "tree" ],
+  "keywords": [
+    "AST",
+    "source",
+    "traversal",
+    "syntax",
+    "tree"
+  ],
   "scripts": {
     "test": "grunt"
   },
@@ -14,7 +20,11 @@
     "url": "git@github.com:SBoudrias/AST-query.git"
   },
   "dependencies": {
-    "falafel": "~0.3.1"
+    "falafel": "~0.3.1",
+    "esprima": "~1.0.4",
+    "escodegen": "~1.2.0",
+    "lodash": "~2.4.1",
+    "traverse": "~0.6.6"
   },
   "devDependencies": {
     "chai": "~1.7.2",

@@ -1,29 +1,29 @@
-/*jshint strict:false */
-module.exports = function( grunt ) {
+module.exports = function (grunt) {
+  'use strict';
 
   grunt.initConfig({
 
     jshint: {
       options: {
-        jshintrc : ".jshintrc"
+        jshintrc : '.jshintrc'
       },
-      all: [ "lib/**/*.js", "test/**/*.js" ]
+      all: [ 'lib/**/*.js', 'test/**/*.js', 'gruntfile.js' ]
     },
 
     simplemocha: {
       options: {
-        ui: "bdd",
-        reporter: "spec"
+        ui: 'bdd',
+        reporter: 'spec'
       },
-      all: "test/specs/**/*.js"
+      all: 'test/**/*.js'
     }
 
   });
 
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks("grunt-simple-mocha");
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-simple-mocha');
   grunt.loadNpmTasks('grunt-release');
 
-  grunt.registerTask("default", [ "jshint", "simplemocha" ]);
+  grunt.registerTask('default', [ 'jshint', 'simplemocha' ]);
 
 };

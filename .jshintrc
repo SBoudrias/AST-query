@@ -21,7 +21,7 @@
   "onevar"    : false,
   "plusplus"  : false,
   "proto"     : true,
-  "quotmark"  : "double",
+  "quotmark"  : "single",
   "regexdash" : true,
   "regexp"    : true,
   "scripturl" : true,
