@@ -20,6 +20,11 @@ describe('Variable objects', function () {
       assert.equal(this.tree1.toString(), 'var a = 3;');
     });
 
+    it('update value (object)', function () {
+      this.tree1.var('a').value('{ foo: "bar" }');
+      assert.equal(this.tree1.toString(), 'var a = { foo: \'bar\' };');
+    });
+
     it('update value when multiple declared var in a single block', function () {
       this.tree2.var('b').value('3');
       assert.equal(this.tree2.toString(), 'var a = 1, b = 3;');
@@ -29,9 +34,12 @@ describe('Variable objects', function () {
       this.tree3.var('a').value('3');
       assert.equal(this.tree3.toString(), 'var a = 3;\n(function () {\n    var a = 3;\n}());');
     });
+  });
 
-    it('return the value');
-
-    it('return the first matched variable value');
+  describe('#rename()', function () {
+    it('rename the variable declaration', function () {
+      this.tree1.var('a').rename('foo');
+      assert.equal(this.tree1.toString(), 'var foo = 1;');
+    });
   });
 });
