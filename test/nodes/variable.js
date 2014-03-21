@@ -2,10 +2,13 @@
 var assert = require('assert');
 var Tree = require('../..');
 
+var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
+var Literal = require('../../lib/nodes/Literal.js');
+
 describe('Variable objects', function () {
   beforeEach(function () {
     this.tree1 = new Tree('var a = 1;');
-    this.tree2 = new Tree('var a = 1, b = 1;');
+    this.tree2 = new Tree('var a = 1, b = { a: "b" };');
     this.tree3 = new Tree('var a = 1; (function () { var a = 2; }());');
   });
 
@@ -33,6 +36,11 @@ describe('Variable objects', function () {
     it('update value of every matching variable', function () {
       this.tree3.var('a').value('3');
       assert.equal(this.tree3.toString(), 'var a = 3;\n(function () {\n    var a = 3;\n}());');
+    });
+
+    it('returns a wrapped value', function () {
+      assert(this.tree1.var('a').value() instanceof Literal);
+      assert(this.tree2.var('b').value() instanceof ObjectExpression);
     });
   });
 
