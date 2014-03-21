@@ -2,6 +2,9 @@
 var assert = require('assert');
 var Tree = require('../..');
 
+var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
+var Literal = require('../../lib/nodes/Literal.js');
+
 describe('CallExpression objects', function () {
   beforeEach(function () {
     this.tree1 = new Tree('foo(1);');
@@ -33,11 +36,19 @@ describe('CallExpression objects', function () {
       });
     });
 
-    describe('#get()', function () {
+    describe('#at()', function () {
+      beforeEach(function () {
+        this.tree = new Tree('foo(1, { a : "b" }, "foo", b);');
+      });
+
       it('returns argument at given index', function () {
-        var tree = new Tree('foo(1, { a : "b" }, "foo", b);');
-        assert.equal(tree.callExpression('foo').arguments.get(0).value, 1);
-        assert.equal(tree.callExpression('foo').arguments.get(2).value, 'foo');
+        assert.equal(this.tree.callExpression('foo').arguments.at(0).value(), 1);
+        assert.equal(this.tree.callExpression('foo').arguments.at(2).value(), 'foo');
+      });
+
+      it('returns wrapped node', function () {
+        assert(this.tree.callExpression('foo').arguments.at(0) instanceof Literal);
+        assert(this.tree.callExpression('foo').arguments.at(1) instanceof ObjectExpression);
       });
     });
   });
