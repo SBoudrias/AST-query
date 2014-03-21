@@ -1,4 +1,5 @@
 var assert = require('assert');
+var Tree = require('../../');
 var valueFactory = require('../../lib/factory/value.js');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
@@ -22,6 +23,19 @@ describe('ObjectExpression objects', function () {
       assert(this.obj.key('a') instanceof Literal);
       assert(this.obj.key('bar') instanceof ObjectExpression);
       assert(this.obj.key('bar').key('sub') instanceof Literal);
+    });
+  });
+
+  describe('#value()', function () {
+    it('replace itself with new value', function () {
+      var tree = new Tree('var b = { a: "b" };');
+      tree.var('b').value().value('1');
+      assert.equal(tree.toString(), 'var b = 1;');
+    });
+
+    it('return the new value', function () {
+      var obj = this.obj.key('bar').value('"a"');
+      assert(obj instanceof Literal);
     });
   });
 });
