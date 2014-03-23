@@ -24,6 +24,12 @@ describe('ObjectExpression objects', function () {
       assert(this.obj.key('bar') instanceof ObjectExpression);
       assert(this.obj.key('bar').key('sub') instanceof Literal);
     });
+
+    it('create a placeholder object if key doesn\'t exist', function () {
+      var obj = new Tree('var b = { a: null };');
+      obj.var('b').value().key('c').value('1');
+      assert.equal(obj.toString(), 'var b = {\n        a: null,\n        c: 1\n    };');
+    });
   });
 
   describe('#value()', function () {
