@@ -30,6 +30,12 @@ describe('ObjectExpression objects', function () {
       obj.var('b').value().key('c').value('1');
       assert.equal(obj.toString(), 'var b = {\n        a: null,\n        c: 1\n    };');
     });
+
+    it('doesn\'t render the placeholder if no value is assigned', function () {
+      var obj = new Tree('var b = { a: null };');
+      obj.var('b').value().key('c');
+      assert.equal(obj.toString(), 'var b = { a: null };');
+    });
   });
 
   describe('#value()', function () {
