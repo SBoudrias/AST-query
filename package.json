@@ -24,7 +24,8 @@
     "esprima": "~1.0.4",
     "escodegen": "~1.2.0",
     "lodash": "~2.4.1",
-    "traverse": "~0.6.6"
+    "traverse": "~0.6.6",
+    "class-extend": "~0.1.1"
   },
   "devDependencies": {
     "chai": "~1.7.2",
