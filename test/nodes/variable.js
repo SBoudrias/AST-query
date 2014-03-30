@@ -1,15 +1,15 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var Tree = require('../..');
+var program = require('../..');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
 var Literal = require('../../lib/nodes/Literal.js');
 
 describe('Variable objects', function () {
   beforeEach(function () {
-    this.tree1 = new Tree('var a = 1;');
-    this.tree2 = new Tree('var a = 1, b = { a: "b" };');
-    this.tree3 = new Tree('var a = 1; (function () { var a = 2; }());');
+    this.tree1 = program('var a = 1;');
+    this.tree2 = program('var a = 1, b = { a: "b" };');
+    this.tree3 = program('var a = 1; (function () { var a = 2; }());');
   });
 
   it('selects variables', function () {

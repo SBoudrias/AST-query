@@ -1,12 +1,12 @@
 var assert = require('assert');
-var Tree = require('../../');
+var program = require('../../');
 var valueFactory = require('../../lib/factory/value.js');
 
 var Literal = require('../../lib/nodes/Literal.js');
 
 describe('Literal nodes', function () {
   beforeEach(function () {
-    this.tree = new Tree('var a = 2;');
+    this.tree = program('var a = 2;');
   });
 
   describe('#value', function () {

@@ -1,15 +1,15 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var Tree = require('../..');
+var program = require('../..');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
 var Literal = require('../../lib/nodes/Literal.js');
 
 describe('CallExpression objects', function () {
   beforeEach(function () {
-    this.tree1 = new Tree('foo(1);');
-    this.tree2 = new Tree('bar.foo();');
-    this.tree3 = new Tree('bar.doe.foo();');
+    this.tree1 = program('foo(1);');
+    this.tree2 = program('bar.foo();');
+    this.tree3 = program('bar.doe.foo();');
   });
 
   it('selects function call', function () {
@@ -38,7 +38,7 @@ describe('CallExpression objects', function () {
 
     describe('#at()', function () {
       beforeEach(function () {
-        this.tree = new Tree('foo(1, { a : "b" }, "foo", b);');
+        this.tree = program('foo(1, { a : "b" }, "foo", b);');
       });
 
       it('returns argument at given index', function () {

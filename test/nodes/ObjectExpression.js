@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Tree = require('../../');
+var program = require('../../');
 var valueFactory = require('../../lib/factory/value.js');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
@@ -26,13 +26,13 @@ describe('ObjectExpression objects', function () {
     });
 
     it('create a placeholder object if key doesn\'t exist', function () {
-      var obj = new Tree('var b = { a: null };');
+      var obj = program('var b = { a: null };');
       obj.var('b').value().key('c').value('1');
       assert.equal(obj.toString(), 'var b = {\n        a: null,\n        c: 1\n    };');
     });
 
     it('doesn\'t render the placeholder if no value is assigned', function () {
-      var obj = new Tree('var b = { a: null };');
+      var obj = program('var b = { a: null };');
       obj.var('b').value().key('c');
       assert.equal(obj.toString(), 'var b = { a: null };');
     });
@@ -40,7 +40,7 @@ describe('ObjectExpression objects', function () {
 
   describe('#value()', function () {
     it('replace itself with new value', function () {
-      var tree = new Tree('var b = { a: "b" };');
+      var tree = program('var b = { a: "b" };');
       tree.var('b').value().value('1');
       assert.equal(tree.toString(), 'var b = 1;');
     });

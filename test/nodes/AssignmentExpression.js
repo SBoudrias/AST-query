@@ -1,13 +1,13 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var Tree = require('../..');
+var program = require('../..');
 
 var AssignmentExpression = require('../../lib/nodes/AssignmentExpression.js');
 
 describe('AssignmentExpression objects', function () {
   beforeEach(function () {
-    this.tree1 = new Tree('a = 1;');
-    this.tree2 = new Tree('module.export = 2');
+    this.tree1 = program('a = 1;');
+    this.tree2 = program('module.export = 2');
   });
 
   it('selects function call', function () {

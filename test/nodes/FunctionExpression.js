@@ -1,14 +1,14 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var Tree = require('../..');
+var program = require('../..');
 var valueFactory = require('../../lib/factory/value.js');
 
 var FunctionExpression = require('../../lib/nodes/FunctionExpression.js');
 
 describe('FunctionExpression objects', function () {
   beforeEach(function () {
-    this.func = new Tree('var a = function () { "use strict"; }');
-    this.func2 = new Tree('var a = function () { somecall(); }');
+    this.func = program('var a = function () { "use strict"; }');
+    this.func2 = program('var a = function () { somecall(); }');
   });
 
   it('#type is FunctionExpression', function () {
