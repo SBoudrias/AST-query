@@ -1,6 +1,9 @@
 AST Query
 ================
 
+[![npm](https://badge.fury.io/js/ast-query.svg)](http://badge.fury.io/js/ast-query) [![tests](https://travis-ci.org/SBoudrias/AST-query.svg?branch=master)](http://travis-ci.org/SBoudrias/AST-query) [![dependencies](https://david-dm.org/SBoudrias/AST-query.svg?theme=shields.io)](https://david-dm.org/SBoudrias/AST-query)
+
+
 This project is a tentative to create a simple JavaScript AST modification library.
 
 If you've ever worked with AST trying to edit source code, you'll know it is a bad time. AST syntax is terse and forces you to loop a three and use conditionals structure a lot. AST Query hide this complexity behind a declarative façade.
