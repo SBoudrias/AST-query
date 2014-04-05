@@ -1,6 +1,6 @@
 {
   "name": "ast-query",
-  "version": "0.1.0-pre.2",
+  "version": "0.2.0",
   "description": "Declarative JavaScript AST modification façade",
   "main": "lib/tree.js",
   "author": "Simon Boudrias <admin@simonboudrias.com>",
@@ -20,7 +20,6 @@
     "url": "git@github.com:SBoudrias/AST-query.git"
   },
   "dependencies": {
-    "falafel": "~0.3.1",
     "esprima": "~1.0.4",
     "escodegen": "~1.2.0",
     "lodash": "~2.4.1",
@@ -28,7 +27,6 @@
     "class-extend": "~0.1.1"
   },
   "devDependencies": {
-    "chai": "~1.7.2",
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.9",
     "grunt-contrib-jshint": "~0.5.0",
