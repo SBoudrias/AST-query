@@ -78,7 +78,7 @@ You'd call `tree.callExpression('grunt.initConfig')` to get the CallExpression n
 ### `tree.assignment( assignedTo )`
 - **assignedTo** (String) - The name (name or object) a value is assigned to
 
-Find and return an [`AssignementExpression` node](#AssignementExpression-node).
+Find and return an [`AssignementExpression` node](#assignementexpression-node).
 
 You'd call `tree.assignment('module.exports')` to query the code below:
 
@@ -113,7 +113,7 @@ Return a new CallExpression nodes collection with nodes passing the iterator tes
 
 ### `.arguments`
 
-A property pointing to an [`ArrayExpression` node] referencing the called function arguments.
+A property pointing to an [`ArrayExpression` node](#arrayexpression-node) referencing the called function arguments.
 
 AssignementExpression node
 --------------------
