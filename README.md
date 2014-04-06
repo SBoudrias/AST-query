@@ -113,7 +113,7 @@ Return a new CallExpression nodes collection with nodes passing the iterator tes
 
 ### `.arguments`
 
-A property pointing to an [`ArrayExpression` node] referencing the called function arguments.
+A property pointing to an [`ArrayExpression` node](#arrayExpression-node) referencing the called function arguments.
 
 AssignementExpression node
 --------------------
