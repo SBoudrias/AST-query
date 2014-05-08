@@ -50,4 +50,12 @@ describe('Variable objects', function () {
       assert.equal(this.tree1.toString(), 'var foo = 1;');
     });
   });
+
+  describe('#toString()', function() {
+   it('should preserve comments when assigning new values', function() {
+       this.tree1.var('a').value('{/* some comments */ foo: "bar" }');
+       assert.equal(this.tree1.toString().replace(/[\r\n\t\s]+/gm,''), 'vara={/*somecomments*/foo:\'bar\'};');
+   });
+  });
+
 });
