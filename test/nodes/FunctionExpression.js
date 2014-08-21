@@ -9,6 +9,9 @@ describe('FunctionExpression objects', function () {
   beforeEach(function () {
     this.func = program('var a = function () { "use strict"; }');
     this.func2 = program('var a = function () { somecall(); }');
+    // Need more than 10 statements to test for #12
+    this.func3 = program('var a = function () { "use strict"; call(); call(); call(); call();' +
+      'call(); call(); call(); call(); call(); call();}');
   });
 
   it('#type is FunctionExpression', function () {
@@ -44,6 +47,14 @@ describe('FunctionExpression objects', function () {
         this.func.var('a').value().body.prepend('callFunc(); foo();');
         assert.equal(this.func.toString(),
           'var a = function () {\n    \'use strict\';\n    callFunc();\n    foo();\n};');
+      });
+
+      it('insert code after "use strict" statement with a lot of other statements', function () {
+        this.func3.var('a').value().body.prepend('foo();');
+        console.log(this.func3.toString());
+        assert.equal(this.func3.toString(),
+          'var a = function () {\n    \'use strict\';\n    foo();\n    call();\n    call();\n    call();\n' +
+          '    call();\n    call();\n    call();\n    call();\n    call();\n    call();\n    call();\n};');
       });
     });
   });
