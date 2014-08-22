@@ -51,7 +51,6 @@ describe('FunctionExpression objects', function () {
 
       it('insert code after "use strict" statement with a lot of other statements', function () {
         this.func3.var('a').value().body.prepend('foo();');
-        console.log(this.func3.toString());
         assert.equal(this.func3.toString(),
           'var a = function () {\n    \'use strict\';\n    foo();\n    call();\n    call();\n    call();\n' +
           '    call();\n    call();\n    call();\n    call();\n    call();\n    call();\n    call();\n};');
