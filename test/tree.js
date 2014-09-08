@@ -36,7 +36,7 @@ describe('Tree', function () {
 
   describe('created with tab formatting option', function () {
     it('return the generated source code', function () {
-      var tree = program('(function () {\n\tconsole.log("foo");\n\tconsole.log("bar");\n})();', {
+      var tree = program('(function () {\n  console.log("foo");\n  console.log("bar");\n})();', {
         format: {
           indent: {
             style: '\t'
