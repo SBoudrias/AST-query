@@ -7,7 +7,7 @@ var Literal = require('../../lib/nodes/Literal.js');
 
 describe('ObjectExpression objects', function () {
   beforeEach(function () {
-    this.obj = new ObjectExpression(valueFactory.create('{ a: "b", foo: 1, bar: { sub: 1 } }'));
+    this.obj = new ObjectExpression(valueFactory.create('{ a: "b", foo: 1, bar: { sub: 1 }, "special-key":"foo" }'));
   });
 
   it('#type equal ObjectExpression', function () {
@@ -35,6 +35,10 @@ describe('ObjectExpression objects', function () {
       var obj = program('var b = { a: null };');
       obj.var('b').value().key('c');
       assert.equal(obj.toString(), 'var b = { a: null };');
+    });
+
+    it('can search for special keys',function(){
+      assert(this.obj.key('"special-key"')  instanceof Literal);
     });
   });
 
