@@ -44,8 +44,9 @@ API
 Program
 ----------------
 
-### `var tree = program( sourceCode )`
+### `var tree = program( sourceCode, options )`
 - **sourceCode** (String) - The source code to edit.
+- **options** (Object) _optional_ - [escodegen](https://github.com/Constellation/escodegen) option object
 
 Returns an AST tree you can then query as explained below:
 
