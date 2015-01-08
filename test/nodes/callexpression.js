@@ -51,5 +51,26 @@ describe('CallExpression objects', function () {
         assert(this.tree.callExpression('foo').arguments.at(1) instanceof ObjectExpression);
       });
     });
+
+    describe('#value()', function () {
+      beforeEach(function () {
+        this.tree = program('var foo = [1, 2, 3, 4];');
+      });
+
+      it('replaces itself with new value', function () {
+        var array = this.tree.var('foo').value();
+        var newArray = array.value('[8, 9]');
+        assert.equal(this.tree.var('foo').value().at(0).value(), 8);
+        assert.equal(this.tree.var('foo').value().at(1).value(), 9);
+        assert.throws(function(){
+          this.tree.var('foo').value().at(2).value();
+        });
+      });
+
+      it('returns the new value', function () {
+        var array = this.tree.var('foo').value();
+        var newArray = array.value('[1, 2]');
+      });
+    });
   });
 });
