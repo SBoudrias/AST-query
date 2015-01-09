@@ -19,14 +19,14 @@ describe('ArrayExpression objects', function () {
     it('adds a new value to the end of the array', function () {
       this.arr.at(1).push('"a"');
       assert.equal(this.arr.at(1).at(1).value(), 3);
-      assert.equal(this.arr.at(1).at(2).value(), "a");
+      assert.equal(this.arr.at(1).at(2).value(), 'a');
     });
   });
 
   describe('#unshift()', function () {
     it('adds a new value to the start of the array', function () {
       this.arr.at(1).unshift('"a"');
-      assert.equal(this.arr.at(1).at(0).value(), "a");
+      assert.equal(this.arr.at(1).at(0).value(), 'a');
       assert.equal(this.arr.at(1).at(2).value(), 3);
     });
   });
@@ -41,7 +41,7 @@ describe('ArrayExpression objects', function () {
 
       assert.equal(this.arr.at(0).value(), 1);
       assert.equal(this.arr.at(1).at(0).value(), 2);
-      assert.equal(this.arr.at(2).value(), "a");
+      assert.equal(this.arr.at(2).value(), 'a');
     });
   });
 });
