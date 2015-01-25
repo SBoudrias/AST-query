@@ -28,7 +28,7 @@ describe('ObjectExpression objects', function () {
     it('create a placeholder object if key doesn\'t exist', function () {
       var obj = program('var b = { a: null };');
       obj.var('b').value().key('c').value('1');
-      assert.equal(obj.toString(), 'var b = {\n        a: null,\n        c: 1\n    };');
+      assert.equal(obj.toString(), 'var b = {\n    a: null,\n    c: 1\n};');
     });
 
     it('doesn\'t render the placeholder if no value is assigned', function () {
