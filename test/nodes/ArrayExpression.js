@@ -44,4 +44,24 @@ describe('ArrayExpression objects', function () {
       assert.equal(this.arr.at(2).value(), 'a');
     });
   });
+
+  describe('#value()', function () {
+    it('replace itself with new value', function () {
+      var tree = program('var b = ["a"];');
+      tree.var('b').value('[1]');
+      assert.equal(tree.toString(), 'var b = [1];');
+    });
+
+    it('replaces itself with a different type of node', function () {
+      var tree = program('var b = ["a"];');
+      tree.var('b').value('"this is literal"');
+      assert.equal(tree.toString(), 'var b = \'this is literal\';');
+    });
+
+    it('return the new value', function () {
+      var val = this.arr.at(1).value('"a"');
+      assert(val instanceof Literal);
+      assert.equal(val.value(), 'a');
+    });
+  });
 });
