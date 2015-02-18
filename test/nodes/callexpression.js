@@ -10,6 +10,7 @@ describe('CallExpression objects', function () {
     this.tree1 = program('foo(1);');
     this.tree2 = program('bar.foo();');
     this.tree3 = program('bar.doe.foo();');
+    this.tree4 = program('var a;');
   });
 
   it('selects function call', function () {
@@ -19,6 +20,10 @@ describe('CallExpression objects', function () {
   it('selects method call', function () {
     assert.equal(this.tree2.callExpression('bar.foo').length, 1);
     assert.equal(this.tree3.callExpression('bar.doe.foo').length, 1);
+  });
+
+  it('can match no node', function () {
+    assert.equal(this.tree4.callExpression('bar').length, 0);
   });
 
   describe('#arguments', function () {
