@@ -166,6 +166,10 @@ ArrayExpression node
 
 Returns a value wrapped in an AST query interface.
 
+### `value( value )`
+
+Replace current node with a new value. Returns the new value wrapped.
+
 Body node
 -------------------
 
