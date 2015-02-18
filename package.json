@@ -1,6 +1,6 @@
 {
   "name": "ast-query",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Declarative JavaScript AST modification façade",
   "main": "lib/tree.js",
   "author": "Simon Boudrias <admin@simonboudrias.com>",
