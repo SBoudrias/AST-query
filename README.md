@@ -6,7 +6,7 @@ AST Query
 
 This project is a tentative to create a simple JavaScript AST modification library.
 
-If you've ever worked with AST trying to edit source code, you'll know it is a bad time. AST syntax is terse and forces you to loop a three and use conditionals structure a lot. AST Query hide this complexity behind a declarative façade.
+If you've ever worked with AST trying to edit source code, you'll know it is a bad time. AST syntax is terse and forces you to loop a tree and use conditional structure a lot. AST Query hide these complexities behind a declarative façade.
 
 Making the simplicity choice means AST Query won't try to cover the full AST API. Rather we strive to answer commons needs.
 
