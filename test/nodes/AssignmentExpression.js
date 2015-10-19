@@ -18,6 +18,10 @@ describe('AssignmentExpression objects', function () {
     assert.equal(this.tree2.assignment('module.export').length, 1);
   });
 
+  it('selects from regex', function () {
+    assert.equal(this.tree2.assignment(/module/).length, 1);
+  });
+
   describe('#value()', function () {
     it('return the wrapped value', function () {
       var val = this.tree1.assignment('a').value();
