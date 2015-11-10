@@ -35,7 +35,7 @@ describe('CallExpression objects', function () {
         ),
         matchEveryFunction = /.+/;
 
-      assert.equal(multiFnTree.callExpression(/^selected/).length, 2);
+      assert.equal(multiFnTree.callExpression(/(\.|^)selected/).length, 2);
       assert.equal(multiFnTree.callExpression(matchEveryFunction).length, 3);
     });
   });
