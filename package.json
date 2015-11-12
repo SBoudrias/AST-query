@@ -21,6 +21,7 @@
     "escodegen": "^1.6.0",
     "esprima": "^2.0.0",
     "lodash": "^3.2.0",
+    "lodash.isregexp": "^3.0.3",
     "traverse": "^0.6.6"
   },
   "devDependencies": {
