@@ -66,10 +66,11 @@ describe('Tree', function () {
         program('var a = 1;\nexport default a;');
       }, Error);
     });
+
     it('parses the source code as a module when the sourceType configuration is present', function () {
       assert.doesNotThrow(function () {
         program('var a = 1;\nexport default a;', {}, { sourceType: 'module'});
-      }, Error);
+      });
     });
   });
 });
