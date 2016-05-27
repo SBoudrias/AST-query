@@ -47,7 +47,7 @@ Program
 ### `var tree = program( sourceCode, escodegenOptions, esprimaOptions )`
 - **sourceCode** (String) - The source code to edit.
 - **escodegenOptions** (Object) _optional_ - [escodegen](https://github.com/Constellation/escodegen) option object
-- **esprimaOptions** (Object) _optional_ - [esprima](http://esprima.org/doc) option object
+- **acornOptions** (Object) _optional_ - [acorn](https://github.com/ternjs/acorn) option object
 
 Returns an AST tree you can then query as explained below:
 
@@ -89,10 +89,18 @@ module.exports = function () {
   // code
 };
 ```
-
 ### `tree.body`
 
 Property representing the program body in a [`Body` node](#body-node).
+
+### `tree.verbatim( body )`
+- **body** (String) - The source code to inline verbatim
+
+Adds body and return a token assigment.
+
+```js
+tree.body.append('var a = 1;' + tree.verbatim('ANYTHING'));
+```
 
 Variable node
 -----------------
@@ -186,11 +194,11 @@ Contributing
 =====================
 
 **Style Guide**: Please base yourself on [Idiomatic.js](https://github.com/rwldrn/idiomatic.js)
-style guide with two space indent  
+style guide with two space indent
 **Unit test**: Unit test are wrote in Mocha. Please add a unit test for every new feature
-or bug fix. `npm test` to run the test suite.  
+or bug fix. `npm test` to run the test suite.
 **Documentation**: Add documentation for every API change. Feel free to send corrections
-or better docs!  
+or better docs!
 **Pull Requests**: Send _fixes_ PR on the `master` branch. Any new features should be send
 on the `wip`branch.
 
@@ -198,5 +206,5 @@ on the `wip`branch.
 License
 =====================
 
-Copyright (c) 2013 Simon Boudrias (twitter: @vaxilart)  
+Copyright (c) 2013 Simon Boudrias (twitter: @vaxilart)
 Licensed under the MIT license.

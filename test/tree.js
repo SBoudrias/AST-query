@@ -54,7 +54,7 @@ describe('Tree', function () {
       }, Error);
     });
     it('does not parse the source code as a module', function () {
-      assert.throws(function() {
+      assert.throws(function () {
         program('var a = 1;\nexport default a;');
       }, Error);
     });
@@ -62,15 +62,70 @@ describe('Tree', function () {
 
   describe('created with es2015 module esprima options', function () {
     it('does not parse the module source code when the sourceType configuration is missing', function () {
-      assert.throws(function() {
+      assert.throws(function () {
         program('var a = 1;\nexport default a;');
       }, Error);
     });
 
     it('parses the source code as a module when the sourceType configuration is present', function () {
       assert.doesNotThrow(function () {
-        program('var a = 1;\nexport default a;', {}, { sourceType: 'module'});
+        program('var a = 1;\nexport default a;', {}, { sourceType: 'module' });
       });
     });
   });
+
+  describe('created with jsx acron options', function () {
+    it('does not parse the jsx source code when the jsx configuration is missing', function () {
+      assert.throws(function () {
+        program('(function () {\n return (<div>body</div>);\n })();');
+      }, Error);
+    });
+
+    // it('parses the jsx source code when the jsx configuration is present', function () {
+    //   assert.doesNotThrow(function () {
+    //     var tree = program('(function () {\n return (<div>body</div>);\n })();', {}, { plugins: { jsx: {} } });
+    //   });
+    // });
+
+    it('parses the jsx source code when the jsx configuration is present when appended', function () {
+      assert.doesNotThrow(function () {
+        var tree = program('', {}, { plugins: { jsx: {} } });
+        tree.body.append('(function () {\n return (<div>body</div>);\n })();');
+      });
+    });
+  });
+
+  describe('#verbatim() - without using', function () {
+    it('does not error', function () {
+      var tree = program('var a = 1');
+      tree.verbatim('ANYTHING');
+    });
+  });
+
+  describe('#verbatim() - used as replacement', function () {
+    it('return the generated source code when appended', function () {
+      var tree = program('var a = 1');
+      tree.body.append(tree.verbatim('ANYTHING'));
+      assert.equal(tree.toString(), 'var a = 1;\nANYTHING;');
+    });
+
+    it('return the generated source code when appended multiple times', function () {
+      var tree = program('var a = 1');
+      tree.body.append(tree.verbatim('ANYTHING1') + tree.verbatim('ANYTHING2') + tree.verbatim('ANYTHING3'));
+      assert.equal(tree.toString(), 'var a = 1;\nANYTHING1;\nANYTHING2;\nANYTHING3;');
+    });
+
+    it('return the generated source code when appended with values', function () {
+      var tree = program('var a = 1');
+      tree.body.append('before = ' + tree.verbatim('ANYTHING'));
+      assert.equal(tree.toString(), 'var a = 1;\nbefore = (ANYTHING);');
+    });
+
+    it('return the generated source code when prepended', function () {
+      var tree = program('var a = 1');
+      tree.body.prepend(tree.verbatim('ANYTHING'));
+      assert.equal(tree.toString(), 'ANYTHING;\nvar a = 1;');
+    });
+  });
+
 });
