@@ -18,7 +18,7 @@
   "repository": "SBoudrias/AST-query",
   "dependencies": {
     "class-extend": "^0.1.1",
-    "escodegen": "^1.6.0",
+    "escodegen-wallaby": "^1.6.7",
     "esprima": "^2.0.0",
     "acorn-jsx": "^3.0.1",
     "lodash": "^4.6.1",
