@@ -74,6 +74,27 @@ describe('Tree', function () {
     });
   });
 
+  describe('created with jsx acron options', function () {
+    it('does not parse the jsx source code when the jsx configuration is missing', function () {
+      assert.throws(function () {
+        program('(function () {\n return (<div>body</div>);\n })();');
+      }, Error);
+    });
+
+    // it('parses the jsx source code when the jsx configuration is present', function () {
+    //   assert.doesNotThrow(function () {
+    //     var tree = program('(function () {\n return (<div>body</div>);\n })();', {}, { plugins: { jsx: {} } });
+    //   });
+    // });
+
+    it('parses the jsx source code when the jsx configuration is present when appended', function () {
+      assert.doesNotThrow(function () {
+        var tree = program('', {}, { plugins: { jsx: {} } });
+        tree.body.append('(function () {\n return (<div>body</div>);\n })();');
+      });
+    });
+  });
+
   describe('#verbatim() - without using', function () {
     it('does not error', function () {
       var tree = program('var a = 1');
