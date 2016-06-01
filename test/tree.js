@@ -109,6 +109,12 @@ describe('Tree', function () {
       assert.equal(tree.toString(), 'var a = 1;\nANYTHING;');
     });
 
+    it('return the generated source code when appended multiple times', function () {
+      var tree = program('var a = 1');
+      tree.body.append(tree.verbatim('ANYTHING1') + tree.verbatim('ANYTHING2') + tree.verbatim('ANYTHING3'));
+      assert.equal(tree.toString(), 'var a = 1;\nANYTHING1;\nANYTHING2;\nANYTHING3;');
+    });
+
     it('return the generated source code when appended with values', function () {
       var tree = program('var a = 1');
       tree.body.append('before = ' + tree.verbatim('ANYTHING'));
