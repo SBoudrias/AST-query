@@ -47,7 +47,7 @@ Program
 ### `var tree = program( sourceCode, escodegenOptions, esprimaOptions )`
 - **sourceCode** (String) - The source code to edit.
 - **escodegenOptions** (Object) _optional_ - [escodegen](https://github.com/Constellation/escodegen) option object
-- **esprimaOptions** (Object) _optional_ - [esprima](http://esprima.org/doc) option object
+- **acronOptions** (Object) _optional_ - [acron](https://github.com/ternjs/acorn) option object
 
 Returns an AST tree you can then query as explained below:
 
@@ -89,10 +89,18 @@ module.exports = function () {
   // code
 };
 ```
-
 ### `tree.body`
 
 Property representing the program body in a [`Body` node](#body-node).
+
+### `tree.verbatim( body )`
+- **body** (String) - The source code to inline verbatim
+
+Adds body and return a token assigment.
+
+```js
+tree.body.append('var a = 1;' + tree.verbatim('ANYTHING'));
+```
 
 Variable node
 -----------------
