@@ -24,8 +24,8 @@
     "traverse": "^0.6.6"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.9",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-simple-mocha": "^0.4.0"
   }
