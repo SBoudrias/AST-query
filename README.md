@@ -44,7 +44,7 @@ API
 Program
 ----------------
 
-### `var tree = program( sourceCode, escodegenOptions, esprimaOptions )`
+### `var tree = program( sourceCode, escodegenOptions, acornOptions )`
 - **sourceCode** (String) - The source code to edit.
 - **escodegenOptions** (Object) _optional_ - [escodegen](https://github.com/Constellation/escodegen) option object
 - **acornOptions** (Object) _optional_ - [acorn](https://github.com/ternjs/acorn) option object
