@@ -1,9 +1,18 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var program = require('../..');
 var valueFactory = require('../../lib/factory/value.js');
 
 var FunctionExpression = require('../../lib/nodes/FunctionExpression.js');
+
+var Tree = require('../..');
+
+[
+  Tree.fromSource,
+  function() {
+    var tree = Tree.fromSource(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    return Tree.fromTree(tree.tree, arguments[1], arguments[2], arguments[3], arguments[4]);
+  },
+].forEach(function(program) {
 
 describe('FunctionExpression objects', function () {
   beforeEach(function () {
@@ -57,4 +66,6 @@ describe('FunctionExpression objects', function () {
       });
     });
   });
+});
+
 });

@@ -1,8 +1,17 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var program = require('../..');
 
 var AssignmentExpression = require('../../lib/nodes/AssignmentExpression.js');
+
+var Tree = require('../..');
+
+[
+  Tree.fromSource,
+  function() {
+    var tree = Tree.fromSource(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    return Tree.fromTree(tree.tree, arguments[1], arguments[2], arguments[3], arguments[4]);
+  },
+].forEach(function(program) {
 
 describe('AssignmentExpression objects', function () {
   beforeEach(function () {
@@ -34,4 +43,6 @@ describe('AssignmentExpression objects', function () {
       assert.equal(val.value(), 1);
     });
   });
+});
+
 });

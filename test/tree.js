@@ -1,6 +1,15 @@
 var assert = require('assert');
-var program = require('..');
+var Tree = require('..');
 var Body = require('../lib/nodes/Body');
+
+
+[
+  Tree.fromSource,
+  function() {
+    var tree = Tree.fromSource(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    return Tree.fromTree(tree.tree, arguments[1], arguments[2], arguments[3], arguments[4]);
+  },
+].forEach(function(program) {
 
 describe('Tree', function () {
   describe('#toString()', function () {
@@ -127,5 +136,6 @@ describe('Tree', function () {
       assert.equal(tree.toString(), 'ANYTHING;\nvar a = 1;');
     });
   });
+});
 
 });

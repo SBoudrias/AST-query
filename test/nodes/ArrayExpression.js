@@ -1,10 +1,19 @@
 var assert = require('assert');
-var program = require('../../');
 var valueFactory = require('../../lib/factory/value.js');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
 var ArrayExpression = require('../../lib/nodes/ArrayExpression.js');
 var Literal = require('../../lib/nodes/Literal.js');
+
+var Tree = require('../..');
+
+[
+  Tree.fromSource,
+  function() {
+    var tree = Tree.fromSource(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    return Tree.fromTree(tree.tree, arguments[1], arguments[2], arguments[3], arguments[4]);
+  },
+].forEach(function(program) {
 
 describe('ArrayExpression objects', function () {
   beforeEach(function () {
@@ -64,4 +73,6 @@ describe('ArrayExpression objects', function () {
       assert.equal(val.value(), 'a');
     });
   });
+});
+
 });

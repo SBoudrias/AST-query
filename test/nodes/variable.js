@@ -1,9 +1,18 @@
 /*globals describe, it, beforeEach */
 var assert = require('assert');
-var program = require('../..');
 
 var ObjectExpression = require('../../lib/nodes/ObjectExpression.js');
 var Literal = require('../../lib/nodes/Literal.js');
+
+var Tree = require('../..');
+
+[
+  Tree.fromSource,
+  function() {
+    var tree = Tree.fromSource(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+    return Tree.fromTree(tree.tree, arguments[1], arguments[2], arguments[3], arguments[4]);
+  },
+].forEach(function(program) {
 
 describe('Variable objects', function () {
   beforeEach(function () {
@@ -70,5 +79,7 @@ describe('Variable objects', function () {
       assert.equal(this.tree1.toString().replace(/[\r\n\t\s]+/gm, ''), 'vara={/*somecomments*/foo:\'bar\'};');
     });
   });
+
+});
 
 });
